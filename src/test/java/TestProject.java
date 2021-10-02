@@ -1,12 +1,16 @@
 import DataObject.DataConnection;
 import DataObject.GenerateDataObject;
+import StepObject.AddToCartMP3PlayerSteps;
 import StepObject.RegistrationSteps;
 import StepObject.SortByPriceSteps;
+import com.codeborne.selenide.testng.SoftAsserts;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.sql.*;
 
+@Listeners({SoftAsserts.class})
 public class TestProject extends BaseClass {
 
     @BeforeTest
@@ -20,11 +24,11 @@ public class TestProject extends BaseClass {
 
     @Test
     public void FirstTest(){
-        RegistrationSteps stepsObject = new RegistrationSteps();
+        RegistrationSteps stepObjects = new RegistrationSteps();
         generateData.InsertNewRowInSqsTable(connect);
         ResultSet result = generateData.ReturnLastRowFromDataTable(connect);
         GetResultData(result);
-        stepsObject.
+        stepObjects.
                 ClickMyAccaunt().
                 ClickRegistration().
                 FillFirstName(firstName).
@@ -39,11 +43,28 @@ public class TestProject extends BaseClass {
 
     @Test
     public void SecondTest() {
-        SortByPriceSteps stepsObject = new SortByPriceSteps();
-        stepsObject.
+        SortByPriceSteps stepObjects = new SortByPriceSteps();
+        stepObjects.
                 MoveToLaptopsAndNotebooks().
                 ShowAllLeptopsAndNotebooks().
                 SortByPrice().
                 CheckSorting();
+    }
+
+    @Test
+    public void ThirdTest() {
+        AddToCartMP3PlayerSteps stepObjects = new AddToCartMP3PlayerSteps();
+        String iPodShuffle = "iPod Shuffle";
+
+        stepObjects.
+                MoveToDesktop().
+                ShowAllDesktop().
+                ClickMP3Pleyers().
+                MoveToiPodShuffle().
+                CheckiPodShuffleText(iPodShuffle).
+                ClickiPodShuffle().
+                ClickAddCart().
+                CheckCountAndPrice("1",  stepObjects.GetiPodShufflePrice());
+
     }
 }
