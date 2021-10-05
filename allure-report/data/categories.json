@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "Test TestProject.FourthTest failed.\r\n2 checks failed\r\n\r\nFAIL #1: Element should have text '$2.00' {By.xpath: //*[@id=\"collapse-checkout-confirm\"]/div/div[1]/table/tfoot/tr[2]/td[2]}\r\nElement: '<td class=\"text-right\">$5.00</td>'\r\nTimeout: 10 s.\r\n\r\nFAIL #2: Element should have text '$122.00' {By.xpath: //*[@id=\"collapse-checkout-confirm\"]/div/div[1]/table/tfoot/tr[3]/td[2]}\r\nElement: '<td class=\"text-right\">$105.00</td>'\r\nTimeout: 10 s.\r\n",
+      "children" : [ {
+        "name" : "FourthTest",
+        "uid" : "f06059ff10eaba28",
+        "parentUid" : "00072134717342af12c8e22014665687",
+        "status" : "failed",
+        "time" : {
+          "start" : 1633463040766,
+          "stop" : 1633463075551,
+          "duration" : 34785
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "00072134717342af12c8e22014665687"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

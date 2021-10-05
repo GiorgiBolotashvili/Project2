@@ -1,0 +1,76 @@
+{
+  "uid" : "f4c360b9465b3b12",
+  "name" : "ThirdTest",
+  "fullName" : "TestProject.ThirdTest",
+  "historyId" : "832ac7ffb3f07e946bbb49f87204f4e5",
+  "time" : {
+    "start" : 1633462891577,
+    "stop" : 1633462904712,
+    "duration" : 13135
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "Start",
+    "time" : {
+      "start" : 1633462879079,
+      "stop" : 1633462885624,
+      "duration" : 6545
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "TestProject"
+  }, {
+    "name" : "testClass",
+    "value" : "TestProject"
+  }, {
+    "name" : "testMethod",
+    "value" : "ThirdTest"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Default Suite"
+  }, {
+    "name" : "suite",
+    "value" : "Project2"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestProject"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-RAKV3PT"
+  }, {
+    "name" : "thread",
+    "value" : "3416@DESKTOP-RAKV3PT.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "testng"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "f4c360b9465b3b12.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,102 @@
+{
+  "uid" : "3521b351c82472a",
+  "name" : "FirstTest",
+  "fullName" : "TestProject.FirstTest",
+  "historyId" : "4e4e977a03d40d716965091368eaef53",
+  "time" : {
+    "start" : 1633463022673,
+    "stop" : 1633463025861,
+    "duration" : 3188
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "Start",
+    "time" : {
+      "start" : 1633463015977,
+      "stop" : 1633463022566,
+      "duration" : 6589
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "TestProject"
+  }, {
+    "name" : "testClass",
+    "value" : "TestProject"
+  }, {
+    "name" : "testMethod",
+    "value" : "FirstTest"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Default Suite"
+  }, {
+    "name" : "suite",
+    "value" : "Project2"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestProject"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-RAKV3PT"
+  }, {
+    "name" : "thread",
+    "value" : "24272@DESKTOP-RAKV3PT.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "testng"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "2b5b171c146b088e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1633462885746,
+        "stop" : 1633462889187,
+        "duration" : 3441
+      }
+    }, {
+      "uid" : "20e33c98aa4e8ddb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1633462744289,
+        "stop" : 1633462747404,
+        "duration" : 3115
+      }
+    }, {
+      "uid" : "eedbbeefc91f1936",
+      "status" : "passed",
+      "time" : {
+        "start" : 1633462309910,
+        "stop" : 1633462313286,
+        "duration" : 3376
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "3521b351c82472a.json",
+  "parameterValues" : [ ]
+}

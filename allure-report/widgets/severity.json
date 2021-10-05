@@ -1,0 +1,41 @@
+[ {
+  "uid" : "4077dfd6256ccf0b",
+  "name" : "ThirdTest",
+  "time" : {
+    "start" : 1633463028169,
+    "stop" : 1633463040753,
+    "duration" : 12584
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f06059ff10eaba28",
+  "name" : "FourthTest",
+  "time" : {
+    "start" : 1633463040766,
+    "stop" : 1633463075551,
+    "duration" : 34785
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "47420bea24a8efc9",
+  "name" : "SecondTest",
+  "time" : {
+    "start" : 1633463025937,
+    "stop" : 1633463028157,
+    "duration" : 2220
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3521b351c82472a",
+  "name" : "FirstTest",
+  "time" : {
+    "start" : 1633463022673,
+    "stop" : 1633463025861,
+    "duration" : 3188
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

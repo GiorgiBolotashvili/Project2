@@ -1,6 +1,7 @@
 package PageObject;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -15,7 +16,7 @@ public class AddToCartMP3PlayerObject {
                             addToCart = $("#button-cart"),
                             priceIPodTouch = $("#content > div > div.col-sm-4 > ul:nth-child(4) > li:nth-child(1) > h2");
 
-
+    @Step
     public SelenideElement CountAndPriceInCart(){
         return $("#cart-total");
     }

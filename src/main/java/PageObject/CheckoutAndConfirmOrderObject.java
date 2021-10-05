@@ -12,7 +12,7 @@ public class CheckoutAndConfirmOrderObject {
                         checkout = $("#cart > ul > li:nth-child(2) > div > p > a:nth-child(2) > strong"),
                         saveSubTotal = $("#cart > ul > li:nth-child(2) > div > table > tbody > tr:nth-child(1) > td:nth-child(2)"),
                         saveFlatShippingRate = $("#cart > ul > li:nth-child(2) > div > table > tbody > tr:nth-child(2) > td:nth-child(2)"),
-                        saveTotalAmount = $("#cart > ul > li:nth-child(2) > div > table > tbody > tr:nth-child(3) > td:nth-child(2)"),
+                        saveTotalAmount = $("#cart > ul > li:nth-child(2) > div > table > tbody > tr:nth-child(4) > td:nth-child(2)"),
                         firstName = $("#input-payment-firstname"),
                         lastName = $("#input-payment-lastname"),
                         address = $("#input-payment-address-1"),

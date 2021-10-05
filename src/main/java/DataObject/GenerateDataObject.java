@@ -24,7 +24,7 @@ public class GenerateDataObject {
         _password = faker.internet().password();
         _email = faker.internet().emailAddress();
         _address = faker.address().streetAddress();
-        _country = "United States";
+        _country = "United States";                                   //I chose a "united states" because when entering information I guaranteed that the country has states
         _state = faker.address().state();
         _city = faker.address().city();
         String zipCode = faker.address().zipCode();
