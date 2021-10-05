@@ -31,9 +31,7 @@ public class BaseClass {
         com.codeborne.selenide.Configuration.assertionMode = AssertionMode.SOFT;
         com.codeborne.selenide.Configuration.savePageSource = false;
         com.codeborne.selenide.Configuration.screenshots = false;
-        com.codeborne.selenide.Configuration.timeout = Long.parseLong(System.getProperty("selenide.timeout", "8000"));
-
-        System.out.println("Configuration");
+        com.codeborne.selenide.Configuration.timeout = Long.parseLong(System.getProperty("selenide.timeout", "10000"));
     }
 
     public void OpenUrl() {
@@ -57,7 +55,7 @@ public class BaseClass {
                 zip = Integer.parseInt(result.getString(11));
             }
         }catch (SQLException throwables) {
-            System.out.println("Error cennecting to the database");
+            System.out.println(throwables.getMessage());
             throwables.printStackTrace();
         }
     }

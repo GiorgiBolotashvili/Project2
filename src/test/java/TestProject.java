@@ -1,6 +1,7 @@
 import DataObject.DataConnection;
 import DataObject.GenerateDataObject;
 import StepObject.AddToCartMP3PlayerSteps;
+import StepObject.CheckoutAndConfirmOrderSteps;
 import StepObject.RegistrationSteps;
 import StepObject.SortByPriceSteps;
 import com.codeborne.selenide.testng.SoftAsserts;
@@ -22,8 +23,9 @@ public class TestProject extends BaseClass {
         OpenUrl();
     }
 
-    @Test
+    @Test(priority = 1)
     public void FirstTest(){
+        System.out.println("First Test");
         RegistrationSteps stepObjects = new RegistrationSteps();
         generateData.InsertNewRowInSqsTable(connect);
         ResultSet result = generateData.ReturnLastRowFromDataTable(connect);
@@ -41,8 +43,9 @@ public class TestProject extends BaseClass {
                 ContinueRegistration();
     }
 
-    @Test
+    @Test(priority = 2)
     public void SecondTest() {
+        System.out.println("Second Test");
         SortByPriceSteps stepObjects = new SortByPriceSteps();
         stepObjects.
                 MoveToLaptopsAndNotebooks().
@@ -51,20 +54,45 @@ public class TestProject extends BaseClass {
                 CheckSorting();
     }
 
-    @Test
+    @Test(priority = 3, dependsOnMethods = {"FirstTest"})
     public void ThirdTest() {
+        System.out.println("Third Test");
         AddToCartMP3PlayerSteps stepObjects = new AddToCartMP3PlayerSteps();
-        String iPodShuffle = "iPod Shuffle";
+        String iPodShuffle = "iPod Touch";
 
         stepObjects.
                 MoveToDesktop().
                 ShowAllDesktop().
                 ClickMP3Pleyers().
-                MoveToiPodShuffle().
-                CheckiPodShuffleText(iPodShuffle).
-                ClickiPodShuffle().
+                MoveToiPodTouch().
+                CheckiPodTouchText(iPodShuffle).
+                ClickiPodTouch().
                 ClickAddCart().
-                CheckCountAndPrice("1",  stepObjects.GetiPodShufflePrice());
+                CheckCountAndPrice("1",  stepObjects.GetiPodTouchPrice());
+
+    }
+
+    @Test(priority = 4, dependsOnMethods = {"SecondTest"} )
+    public void FourthTest(){
+        System.out.println("Fourth Test");
+        CheckoutAndConfirmOrderSteps stepObjects = new CheckoutAndConfirmOrderSteps();
+
+        stepObjects.
+                ClickToTotalCart().
+                SavePriceInfoFromViewCart().
+                ClickToCheckout().
+                FillFirstName(firstName).
+                FillLastName(lastName).
+                FillAddress(address).
+                FillCity(city).
+                FillPostCode(zip.toString()).
+                FillCountryAndState(country, state).
+                ClickToContinueBillingDetails().
+                ClickToContinueDeliveryDetails().
+                ClickToContinueDeliveryMethod().
+                ClickToTermsAndConditions().
+                ClickToContinuePaymentMethod().
+                CheckConfirmOrder();
 
     }
 }

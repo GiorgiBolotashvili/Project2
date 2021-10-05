@@ -1,12 +1,8 @@
 package StepObject;
 
 import PageObject.SortByPriceObject;
-import com.codeborne.selenide.ElementsCollection;
 import org.testng.Assert;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class SortByPriceSteps extends SortByPriceObject {
 

@@ -21,16 +21,16 @@ public class AddToCartMP3PlayerSteps extends AddToCartMP3PlayerObject {
         return  this;
     }
 
-    public AddToCartMP3PlayerSteps MoveToiPodShuffle(){
-        iPodShuffleImage.hover();
+    public AddToCartMP3PlayerSteps MoveToiPodTouch(){
+        iPodTouchImage.hover();
         return this;
     }
-    public AddToCartMP3PlayerSteps CheckiPodShuffleText(String text){
-        iPodShuffleImage.shouldHave(Condition.attribute("title", text));
+    public AddToCartMP3PlayerSteps CheckiPodTouchText(String text){
+        iPodTouchImage.shouldHave(Condition.attribute("title", text));
         return this;
     }
-    public AddToCartMP3PlayerSteps ClickiPodShuffle(){
-        iPodShuffle.click();
+    public AddToCartMP3PlayerSteps ClickiPodTouch(){
+        iPodTouch.click();
         return this;
     }
 
@@ -53,8 +53,8 @@ public class AddToCartMP3PlayerSteps extends AddToCartMP3PlayerObject {
         return this;
     }
 
-    public String GetiPodShufflePrice(){
-        System.out.println(priceIPodShuffle.getText());
-        return priceIPodShuffle.getText();
+    public String GetiPodTouchPrice(){
+        System.out.println(priceIPodTouch.getText());
+        return priceIPodTouch.getText();
     }
 }

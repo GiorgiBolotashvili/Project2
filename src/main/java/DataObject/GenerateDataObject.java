@@ -24,51 +24,11 @@ public class GenerateDataObject {
         _password = faker.internet().password();
         _email = faker.internet().emailAddress();
         _address = faker.address().streetAddress();
-        _country = faker.address().country();
+        _country = "United States";
         _state = faker.address().state();
         _city = faker.address().city();
         String zipCode = faker.address().zipCode();
         _zip = Integer.parseInt(zipCode.substring(0, 4));
-    }
-
-    public String GenerateFirstName() {
-        return _firstName;
-    }
-
-    public String GenerateLastName() {
-        return _lastName;
-    }
-
-    public String GeneratePhoneNumber() {
-        return _phone;
-    }
-
-    public String GeneratePassword() {
-        return _password;
-    }
-
-    public String GenerateAddress() {
-        return _address;
-    }
-
-    public String GenerateEmail() {
-        return _email;
-    }
-
-    public String GenerateCountry() {
-        return _country;
-    }
-
-    public String GenerateState() {
-        return _state;
-    }
-
-    public String GenerateCity() {
-        return _city;
-    }
-
-    public Integer GenerateZipCode() {
-        return _zip;
     }
 
     public void InsertNewRowInSqsTable(Connection connect) {
@@ -90,7 +50,7 @@ public class GenerateDataObject {
             preStatement.executeUpdate();
 
         } catch (SQLException throwables) {
-            System.out.println("Error cennecting to the database");
+            System.out.println(throwables.getMessage());
             throwables.printStackTrace();
         }
 
@@ -105,7 +65,7 @@ public class GenerateDataObject {
             result = statement.executeQuery(query);
 
         } catch (SQLException throwables) {
-            System.out.println("Error cennecting to the database");
+            System.out.println(throwables.getMessage());
             throwables.printStackTrace();
         }
         return result;

@@ -19,7 +19,6 @@ public class DataConnection {
             throwables.printStackTrace();
         }
 
-        System.out.println("CreateConnection");
         return connection;
     }
 }
