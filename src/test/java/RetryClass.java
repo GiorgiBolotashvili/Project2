@@ -3,8 +3,7 @@ import org.testng.ITestResult;
 
 public class RetryClass implements IRetryAnalyzer {
     private int count = 0;
-    private static int maxTry = 3;
-    public static int counter;
+    private static int maxTry = 2;
 
     @Override
     public boolean retry(ITestResult result) {
@@ -24,7 +23,6 @@ public class RetryClass implements IRetryAnalyzer {
         else {
             result.setStatus(ITestResult.SUCCESS);      //If test passes, TestNG marks it as passed
         }
-
         return false;
     }
 }

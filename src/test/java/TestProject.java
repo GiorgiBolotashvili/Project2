@@ -6,6 +6,7 @@ import StepObject.RegistrationSteps;
 import StepObject.SortByPriceSteps;
 import com.codeborne.selenide.testng.SoftAsserts;
 import io.qameta.allure.*;
+
 import org.junit.jupiter.api.DisplayName;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
@@ -15,7 +16,7 @@ import java.sql.*;
 
 @Epic("Regression Tests")
 @Feature("Registration and Price Check Test")
-@Listeners({SoftAsserts.class})
+@Listeners({SoftAsserts.class, TestListener.class})
 public class TestProject extends BaseClass {
 
     @BeforeTest
@@ -27,12 +28,10 @@ public class TestProject extends BaseClass {
         OpenUrl();
     }
 
-
     @Description("Test Description: Registering a new user with the latest data taken from the database.")
     @Severity(SeverityLevel.BLOCKER)
     @Story("Test verify registration in page")
-    @Test(priority = 1)
-    @DisplayName("Registration Test")
+    @Test(priority = 1, groups = {"Regression1"})
     public void FirstTest(){
         System.out.println("First Test");
         RegistrationSteps stepObjects = new RegistrationSteps();
@@ -55,8 +54,7 @@ public class TestProject extends BaseClass {
     @Description("Test Description: Sorting the prices of laptops from high to low")
     @Severity(SeverityLevel.MINOR)
     @Story("Test verify sorting by price Laptops & Notebooks")
-    @Test(priority = 2)
-    @DisplayName("Sorting Test")
+    @Test(priority = 2, groups = {"Regression1"} )
     public void SecondTest() {
         System.out.println("Second Test");
         SortByPriceSteps stepObjects = new SortByPriceSteps();
@@ -70,9 +68,8 @@ public class TestProject extends BaseClass {
     @Description("Test Description: Move to 'Show all Desktops' and add to cart iPod touch")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Test verify add to cart iPod")
-    @Test(priority = 3, dependsOnMethods = {"FirstTest"})
-    @DisplayName("Add to cart Test")
-    public void ThirdTest() throws InterruptedException {
+    @Test(priority = 3, dependsOnMethods = {"FirstTest"}, groups = {"Regression2"})
+    public void ThirdTest(){
         System.out.println("Third Test");
         AddToCartMP3PlayerSteps stepObjects = new AddToCartMP3PlayerSteps();
         String iPodShuffle = "iPod Touch";
@@ -86,15 +83,12 @@ public class TestProject extends BaseClass {
                 ClickiPodTouch().
                 ClickAddCart().
                 CheckCountAndPrice("1",  stepObjects.GetiPodTouchPrice());
-
-        Thread.sleep(8000);
     }
 
     @Description("Test Description: Fill billind and delivery information and check price info")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Check starting price and confirm order price")
-    @Test(priority = 4, dependsOnMethods = {"SecondTest"}, retryAnalyzer = RetryClass.class )
-    @DisplayName("Checking price Test")
+    @Test(priority = 4, dependsOnMethods = {"ThirdTest"}, retryAnalyzer = RetryClass.class, groups = {"Regression2"})
     public void FourthTest(){
         System.out.println("Fourth Test");
         CheckoutAndConfirmOrderSteps stepObjects = new CheckoutAndConfirmOrderSteps();
@@ -114,6 +108,7 @@ public class TestProject extends BaseClass {
                 ClickToContinueDeliveryMethod().
                 ClickToTermsAndConditions().
                 ClickToContinuePaymentMethod().
-                CheckConfirmOrder();
+                CheckConfirmOrder().
+                ClickToConfirmOrder();
     }
 }

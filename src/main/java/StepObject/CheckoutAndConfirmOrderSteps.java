@@ -1,18 +1,21 @@
 package StepObject;
 
-import PageObject.CheckoutAndConfirmOrderObject;
+import PageObject.CheckoutAndConfirmOrdePage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-public class CheckoutAndConfirmOrderSteps extends CheckoutAndConfirmOrderObject {
+public class CheckoutAndConfirmOrderSteps extends CheckoutAndConfirmOrdePage {
     private String _subTotal;
     private String _flatShippingRate;
     private String _totalAmount;
+    private static boolean _checkRetry = false;
 
     @Step
     public CheckoutAndConfirmOrderSteps ClickToTotalCart(){
         totalCart.click();
+
+        System.out.println("ClickToTotalCart");
         return this;
     }
 
@@ -20,19 +23,35 @@ public class CheckoutAndConfirmOrderSteps extends CheckoutAndConfirmOrderObject 
     public CheckoutAndConfirmOrderSteps SavePriceInfoFromViewCart(){
         _subTotal = saveSubTotal.getText();
         _flatShippingRate = saveFlatShippingRate.getText();
-        _totalAmount = saveTotalAmount.getText();
+
+        if (_checkRetry){
+            _totalAmount = saveTotalAmount2.getText();
+        }else {
+            _totalAmount = saveTotalAmount.getText();
+        }
+
+        System.out.println("1: " + _checkRetry);
         return this;
     }
 
     @Step
     public CheckoutAndConfirmOrderSteps ClickToCheckout(){
+        System.out.println("checkout.click");
         checkout.click();
         return this;
     }
 
     @Step("FillFirstName: Fill in the order details")
     public CheckoutAndConfirmOrderSteps FillFirstName(String fName){
-        firstName.sendKeys(fName);
+        if(_checkRetry){
+            System.out.println("isDisplayed");
+            existingAddress.click();
+        }else {
+            _checkRetry = true;
+        }
+            firstName.sendKeys(fName);
+
+        System.out.println(_checkRetry);
         return this;
     }
 
@@ -62,14 +81,17 @@ public class CheckoutAndConfirmOrderSteps extends CheckoutAndConfirmOrderObject 
 
     @Step("FillCountryAndState: Fill in the order details")
     public CheckoutAndConfirmOrderSteps FillCountryAndState(String country, String state){
-        for (SelenideElement countryElement : countries ) {
-                if(countryElement.getText().equals(country))
+
+            for (SelenideElement countryElement : countries ) {
+                if(countryElement.getText().equals(country)){
                     countryElement.click();
-        }
-        for (SelenideElement stateElement : states) {
-            if (stateElement.getText().equals(state))
-                stateElement.click();
-        }
+                }
+            }
+            checkStateText.shouldHave(Condition.exactText("Alabama"));
+            for (SelenideElement stateElement : states) {
+                if (stateElement.getText().equals(state))
+                    stateElement.click();
+            }
         return this;
     }
 
@@ -108,9 +130,31 @@ public class CheckoutAndConfirmOrderSteps extends CheckoutAndConfirmOrderObject 
         System.out.println("Starting price: " + _subTotal + ", Shiping: " + _flatShippingRate + ", Total:  " + _totalAmount);
         System.out.println("Confirm Order:  " + subToTal.getText() + ", Shiping: " + flatShippingRate.getText() + ", Total: " + totalAmount.getText());
 
-        subToTal.shouldHave(Condition.text(_subTotal));
-        flatShippingRate.shouldHave(Condition.text(_flatShippingRate));
-        totalAmount.shouldHave(Condition.text(_totalAmount));
+        CheckSubTotal();
+        CheckFlatShippingRate();
+        CheckTotalAmount();
+
         return this;
+    }
+
+
+    @Step
+    public  CheckoutAndConfirmOrderSteps ClickToConfirmOrder(){
+        confirmOrder.click();
+        return this;
+    }
+
+
+    @Step
+    public void CheckSubTotal(){
+        subToTal.shouldHave(Condition.text(_subTotal));
+    }
+    @Step
+    public void CheckFlatShippingRate(){
+        flatShippingRate.shouldHave(Condition.text(_flatShippingRate));
+    }
+    @Step
+    public void CheckTotalAmount(){
+        totalAmount.shouldHave(Condition.text(_totalAmount));
     }
 }

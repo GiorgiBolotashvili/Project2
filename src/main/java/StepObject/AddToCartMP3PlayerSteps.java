@@ -1,11 +1,11 @@
 package StepObject;
 
-import PageObject.AddToCartMP3PlayerObject;
+import PageObject.AddToCartMP3PlayerPage;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-public class AddToCartMP3PlayerSteps extends AddToCartMP3PlayerObject {
+public class AddToCartMP3PlayerSteps extends AddToCartMP3PlayerPage {
 
     @Step
     public AddToCartMP3PlayerSteps MoveToDesktop(){

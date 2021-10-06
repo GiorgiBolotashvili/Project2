@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class AddToCartMP3PlayerObject {
+public class AddToCartMP3PlayerPage {
 
     public SelenideElement desktop = $(By.xpath("//*[@id=\"menu\"]/div[2]/ul/li[1]/a")),
                             showAllDesktop = $(By.xpath("//*[@id=\"menu\"]/div[2]/ul/li[1]/div/a")),

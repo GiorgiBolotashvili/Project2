@@ -1,11 +1,11 @@
 package StepObject;
 
-import PageObject.SortByPriceObject;
+import PageObject.SortByPricePage;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 
-public class SortByPriceSteps extends SortByPriceObject {
+public class SortByPriceSteps extends SortByPricePage {
 
     @Step
     public SortByPriceSteps MoveToLaptopsAndNotebooks() {
