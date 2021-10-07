@@ -49,15 +49,14 @@ public class AddToCartMP3PlayerSteps extends AddToCartMP3PlayerPage {
         return this;
     }
 
-    @Step
+    @Step("CheckCountAndPrice:  Quantity must be {0}, Price must be {1}")
     public AddToCartMP3PlayerSteps CheckCountAndPrice(String count, String price){
-        System.out.println("1: - " + CountAndPriceInCart().getText());
         while(true){
             if(CountAndPriceInCart().getText().substring(0,1).equals(count)){
                 break;
             }
         }
-        System.out.println("2: - " + CountAndPriceInCart().getText());
+        System.out.println("ThirdTest - count and price:  " + CountAndPriceInCart().getText());
         String countAndPrice = CountAndPriceInCart().getText();
         Assert.assertEquals(countAndPrice.substring(0,1), count);
         Assert.assertEquals(countAndPrice.substring(countAndPrice.indexOf("$")), price);

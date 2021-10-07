@@ -6,7 +6,6 @@ import StepObject.RegistrationSteps;
 import StepObject.SortByPriceSteps;
 import com.codeborne.selenide.testng.SoftAsserts;
 import io.qameta.allure.*;
-
 import org.junit.jupiter.api.DisplayName;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
@@ -19,11 +18,16 @@ import java.sql.*;
 @Listeners({SoftAsserts.class, TestListener.class})
 public class TestProject extends BaseClass {
 
+
     @BeforeTest
-    public void Start() throws SQLException {
-        System.out.println("Start methot");
+    public void Start(){
         DataConnection conn = new DataConnection();
-        connect = conn.CreateConnection();
+        try {
+            connect = conn.CreateConnection();
+        } catch (SQLException throwables) {
+            System.out.println("Error cennecting to the database");
+            throwables.printStackTrace();
+        }
         generateData = new GenerateDataObject();
         OpenUrl();
     }
@@ -33,7 +37,6 @@ public class TestProject extends BaseClass {
     @Story("Test verify registration in page")
     @Test(priority = 1, groups = {"Regression1"})
     public void FirstTest(){
-        System.out.println("First Test");
         RegistrationSteps stepObjects = new RegistrationSteps();
         generateData.InsertNewRowInSqsTable(connect);
         ResultSet result = generateData.ReturnLastRowFromDataTable(connect);
@@ -56,7 +59,6 @@ public class TestProject extends BaseClass {
     @Story("Test verify sorting by price Laptops & Notebooks")
     @Test(priority = 2, groups = {"Regression1"} )
     public void SecondTest() {
-        System.out.println("Second Test");
         SortByPriceSteps stepObjects = new SortByPriceSteps();
         stepObjects.
                 MoveToLaptopsAndNotebooks().
@@ -70,10 +72,8 @@ public class TestProject extends BaseClass {
     @Story("Test verify add to cart iPod")
     @Test(priority = 3, dependsOnMethods = {"FirstTest"}, groups = {"Regression2"})
     public void ThirdTest(){
-        System.out.println("Third Test");
         AddToCartMP3PlayerSteps stepObjects = new AddToCartMP3PlayerSteps();
         String iPodShuffle = "iPod Touch";
-
         stepObjects.
                 MoveToDesktop().
                 ShowAllDesktop().
@@ -90,9 +90,7 @@ public class TestProject extends BaseClass {
     @Story("Check starting price and confirm order price")
     @Test(priority = 4, dependsOnMethods = {"ThirdTest"}, retryAnalyzer = RetryClass.class, groups = {"Regression2"})
     public void FourthTest(){
-        System.out.println("Fourth Test");
         CheckoutAndConfirmOrderSteps stepObjects = new CheckoutAndConfirmOrderSteps();
-
         stepObjects.
                 ClickToTotalCart().
                 SavePriceInfoFromViewCart().

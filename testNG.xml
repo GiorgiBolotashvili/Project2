@@ -2,9 +2,21 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="testing http://tutorialsninja.com/" parallel="false">
+<suite name="Suite" parallel="false" thread-count="5">
 
     <test name="Regression">
+<!--        <groups>
+            <define name="Regression">
+                <include name="Regression1"/>
+                <include name="Regression2"/>
+            </define>
+
+            <run>
+                <include name="Regression"/>
+            </run>
+
+        </groups>-->
+
         <classes>
             <class name="TestProject">
             </class>

@@ -14,8 +14,6 @@ public class CheckoutAndConfirmOrderSteps extends CheckoutAndConfirmOrdePage {
     @Step
     public CheckoutAndConfirmOrderSteps ClickToTotalCart(){
         totalCart.click();
-
-        System.out.println("ClickToTotalCart");
         return this;
     }
 
@@ -23,20 +21,16 @@ public class CheckoutAndConfirmOrderSteps extends CheckoutAndConfirmOrdePage {
     public CheckoutAndConfirmOrderSteps SavePriceInfoFromViewCart(){
         _subTotal = saveSubTotal.getText();
         _flatShippingRate = saveFlatShippingRate.getText();
-
         if (_checkRetry){
             _totalAmount = saveTotalAmount2.getText();
         }else {
             _totalAmount = saveTotalAmount.getText();
         }
-
-        System.out.println("1: " + _checkRetry);
         return this;
     }
 
     @Step
     public CheckoutAndConfirmOrderSteps ClickToCheckout(){
-        System.out.println("checkout.click");
         checkout.click();
         return this;
     }
@@ -44,14 +38,11 @@ public class CheckoutAndConfirmOrderSteps extends CheckoutAndConfirmOrdePage {
     @Step("FillFirstName: Fill in the order details")
     public CheckoutAndConfirmOrderSteps FillFirstName(String fName){
         if(_checkRetry){
-            System.out.println("isDisplayed");
             existingAddress.click();
         }else {
             _checkRetry = true;
         }
             firstName.sendKeys(fName);
-
-        System.out.println(_checkRetry);
         return this;
     }
 
